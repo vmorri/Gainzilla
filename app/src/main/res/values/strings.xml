@@ -4,5 +4,5 @@
     <string name="name">Name</string>
     <string name="add_exercise">Add exercise</string>
     <string name="sets">Sets</string>
-    <string name="repetitions">Repetitions</string>
+    <string name="repetitions">Reps</string>
 </resources>

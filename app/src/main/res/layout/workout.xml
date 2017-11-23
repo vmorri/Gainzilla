@@ -10,10 +10,6 @@
     tools:context="com.project.section003.group1.gainzilla.MainActivity">
 
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="363dp" />
-
     <Button
         android:id="@+id/workout1"
         android:layout_width="match_parent"

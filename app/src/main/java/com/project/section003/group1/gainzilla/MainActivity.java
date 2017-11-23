@@ -16,6 +16,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     public ListView lv;
     public WorkoutList WL = new WorkoutList();
+    Button workoutOne = (Button) findViewById(R.id.workout1);
+    Button workoutTwo = (Button) findViewById(R.id.workout2);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,85 +29,84 @@ public class MainActivity extends AppCompatActivity {
 
         //workout buttons
         int WLsize = WL.numWorkouts;
-        Button workout1 = (Button) findViewById(R.id.workout1);
-        Button workout2 = (Button) findViewById(R.id.workout2);
-        Button workout3 = (Button) findViewById(R.id.workout3);
-        Button workout4 = (Button) findViewById(R.id.workout4);
-        Button workout5 = (Button) findViewById(R.id.workout5);
-        Button workout6 = (Button) findViewById(R.id.workout6);
-        Button workout7 = (Button) findViewById(R.id.workout7);
+
+        /*Button workoutThree = (Button) findViewById(R.id.workout3);
+        Button workoutFour = (Button) findViewById(R.id.workout4);
+        Button workoutFive = (Button) findViewById(R.id.workout5);
+        Button workoutSix = (Button) findViewById(R.id.workout6);
+        Button workoutSeven = (Button) findViewById(R.id.workout7);*/
         if(WLsize == 0){
-            workout1.setVisibility(View.GONE);
-            workout2.setVisibility(View.GONE);
-            workout3.setVisibility(View.GONE);
-            workout4.setVisibility(View.GONE);
-            workout5.setVisibility(View.GONE);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setVisibility(View.GONE);
+            workoutTwo.setVisibility(View.GONE);
+            /*workoutThree.setVisibility(View.GONE);
+            workoutFour.setVisibility(View.GONE);
+            workoutFive.setVisibility(View.GONE);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);*/
         }
         if(WLsize == 1){
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setVisibility(View.GONE);
-            workout3.setVisibility(View.GONE);
-            workout4.setVisibility(View.GONE);
-            workout5.setVisibility(View.GONE);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setVisibility(View.GONE);
+           /* workoutThree.setVisibility(View.GONE);
+            workoutFour.setVisibility(View.GONE);
+            workoutFive.setVisibility(View.GONE);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);*/
         }
         if(WLsize == 2){
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setVisibility(View.GONE);
-            workout4.setVisibility(View.GONE);
-            workout5.setVisibility(View.GONE);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);}
+           /* workoutThree.setVisibility(View.GONE);
+            workoutFour.setVisibility(View.GONE);
+            workoutFive.setVisibility(View.GONE);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 3) {
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setText(WL.listworkouts.get(2).name);
-            workout4.setVisibility(View.GONE);
-            workout5.setVisibility(View.GONE);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);
+            workoutThree.setText(WL.listworkouts.get(2).name);
+            workoutFour.setVisibility(View.GONE);
+            workoutFive.setVisibility(View.GONE);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 4) {
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setText(WL.listworkouts.get(2).name);
-            workout4.setText(WL.listworkouts.get(3).name);
-            workout5.setVisibility(View.GONE);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);
+            workoutThree.setText(WL.listworkouts.get(2).name);
+            workoutFour.setText(WL.listworkouts.get(3).name);
+            workoutFive.setVisibility(View.GONE);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 5) {
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setText(WL.listworkouts.get(2).name);
-            workout4.setText(WL.listworkouts.get(3).name);
-            workout5.setText(WL.listworkouts.get(4).name);
-            workout6.setVisibility(View.GONE);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);
+            workoutThree.setText(WL.listworkouts.get(2).name);
+            workoutFour.setText(WL.listworkouts.get(3).name);
+            workoutFive.setText(WL.listworkouts.get(4).name);
+            workoutSix.setVisibility(View.GONE);
+            workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 6) {
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setText(WL.listworkouts.get(2).name);
-            workout4.setText(WL.listworkouts.get(3).name);
-            workout5.setText(WL.listworkouts.get(4).name);
-            workout6.setText(WL.listworkouts.get(5).name);
-            workout7.setVisibility(View.GONE);
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);
+            workoutThree.setText(WL.listworkouts.get(2).name);
+            workoutFour.setText(WL.listworkouts.get(3).name);
+            workoutFive.setText(WL.listworkouts.get(4).name);
+            workoutSix.setText(WL.listworkouts.get(5).name);
+            workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 7) {
-            workout1.setText(WL.listworkouts.get(0).name);
-            workout2.setText(WL.listworkouts.get(1).name);
-            workout3.setText(WL.listworkouts.get(2).name);
-            workout4.setText(WL.listworkouts.get(3).name);
-            workout5.setText(WL.listworkouts.get(4).name);
-            workout6.setText(WL.listworkouts.get(5).name);
-            workout6.setText(WL.listworkouts.get(6).name);
-        }
+            workoutOne.setText(WL.listworkouts.get(0).name);
+            workoutTwo.setText(WL.listworkouts.get(1).name);
+            workoutThree.setText(WL.listworkouts.get(2).name);
+            workoutFour.setText(WL.listworkouts.get(3).name);
+            workoutFive.setText(WL.listworkouts.get(4).name);
+            workoutSix.setText(WL.listworkouts.get(5).name);
+            workoutSeven.setText(WL.listworkouts.get(6).name);
+        }*/
 
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -114,12 +115,12 @@ public class MainActivity extends AppCompatActivity {
         });
         addworkout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setContentView(R.layout.add);
+                setContentView(R.layout.activity_exercise);
             }
         });
-        workout1.setOnClickListener(new View.OnClickListener() {
+        workoutOne.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                setContentView(R.layout.add);
             }
         });
 

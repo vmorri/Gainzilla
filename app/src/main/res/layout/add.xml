@@ -3,9 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/addExerList"
-        android:layout_width="300dp"
-        android:layout_height="357dp" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
 </LinearLayout>

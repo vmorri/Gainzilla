@@ -5,6 +5,11 @@ import android.os.Bundle;
 
 public class Exercise extends AppCompatActivity {
 
+
+    // I AM LOVING THIS APP
+    // GKAJSKJBLKJWDKJNDWLKjn
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

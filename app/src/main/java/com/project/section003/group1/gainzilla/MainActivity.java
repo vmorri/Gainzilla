@@ -24,13 +24,31 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = (Button) findViewById(R.id.Start);
         Button addworkout = (Button) findViewById(R.id.add);
-        TextView yLabel = (TextView)findViewById(R.id.yLabel);
-        TextView mLabel = (TextView)findViewById(R.id.mLabel);
-        TextView dLabel = (TextView)findViewById(R.id.dLabel);
-        TextView eLabel = (TextView)findViewById(R.id.eLabel);
+
+        //workout buttons
         int WLsize = WL.workouts.size();
-        if(WLsize >= 1){
-            Button workout1 = (Button) findViewById(R.id.One);
+        Button workout1 = (Button) findViewById(R.id.workout1);
+        Button workout2 = (Button) findViewById(R.id.workout2);
+        Button workout3 = (Button) findViewById(R.id.workout3);
+        if(WLsize == 0){
+            workout1.setVisibility(View.GONE);
+            workout2.setVisibility(View.GONE);
+            workout3.setVisibility(View.GONE);
+        }
+        if(WLsize == 1){
+            workout1.setText(WL.workouts.get(0).name);
+            workout2.setVisibility(View.GONE);
+            workout3.setVisibility(View.GONE);
+        }
+        if(WLsize == 2){
+            workout1.setText(WL.workouts.get(0).name);
+            workout2.setText(WL.workouts.get(1).name);
+            workout3.setVisibility(View.GONE);
+        }
+        if(WLsize == 3){
+            workout1.setText(WL.workouts.get(0).name);
+            workout2.setText(WL.workouts.get(1).name);
+            workout3.setText(WL.workouts.get(2).name);
         }
         //create workout
         lv = (ListView) findViewById(R.id.addExerList);
@@ -41,19 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 your_array_list );
         lv.setAdapter(arrayAdapter);
 
-
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MMMM/d/E", Locale.US); // Set your locale!
-        String strDate = sdf.format(cal.getTime());
-
-        String[] values = strDate.split("/",0);
-
-
-        yLabel.setText(values[0]);
-        mLabel.setText(values[1]);
-        dLabel.setText(values[2]);
-        eLabel.setText(values[3]);
-
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 setContentView(R.layout.workout);
@@ -62,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         addworkout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 setContentView(R.layout.add);
+            }
+        });
+        workout1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                WL.currentWorkout = WL.workouts.get(0);
             }
         });
 

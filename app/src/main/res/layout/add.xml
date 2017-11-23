@@ -5,13 +5,7 @@
 
     <ListView
         android:id="@+id/addExerList"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="357dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_exercise" />
 
 </LinearLayout>

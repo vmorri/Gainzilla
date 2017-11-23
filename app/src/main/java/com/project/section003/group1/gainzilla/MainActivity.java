@@ -25,6 +25,18 @@ public class MainActivity extends AppCompatActivity {
         TextView mLabel = (TextView)findViewById(R.id.mLabel);
         TextView dLabel = (TextView)findViewById(R.id.dLabel);
         TextView eLabel = (TextView)findViewById(R.id.eLabel);
+        int WLsize = WL.workouts.size();
+        if(WLsize >= 1){
+            Button workout1 = (Button) findViewById(R.id.One);
+        }
+        //create workout
+        lv = (ListView) findViewById(R.id.addExerList);
+        List<Exercise> your_array_list = WL.currentWorkout.ex;
+        ArrayAdapter<Exercise> arrayAdapter = new ArrayAdapter<Exercise>(
+                this,
+                android.R.layout.simple_list_item_1,
+                your_array_list );
+        lv.setAdapter(arrayAdapter);
 
 
         Calendar cal = Calendar.getInstance();

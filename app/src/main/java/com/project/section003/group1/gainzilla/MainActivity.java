@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private ListView lv;
-    private WorkoutList WL = new WorkoutList();
+    public ListView lv;
+    public WorkoutList WL = new WorkoutList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = (Button) findViewById(R.id.Start);
         Button addworkout = (Button) findViewById(R.id.add);
-        TextView yLabel = (TextView)findViewById(R.id.yLabel);
-        TextView mLabel = (TextView)findViewById(R.id.mLabel);
-        TextView dLabel = (TextView)findViewById(R.id.dLabel);
-        TextView eLabel = (TextView)findViewById(R.id.eLabel);
         int WLsize = WL.workouts.size();
         if(WLsize >= 1){
             Button workout1 = (Button) findViewById(R.id.One);
@@ -42,17 +38,7 @@ public class MainActivity extends AppCompatActivity {
         lv.setAdapter(arrayAdapter);
 
 
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MMMM/d/E", Locale.US); // Set your locale!
-        String strDate = sdf.format(cal.getTime());
 
-        String[] values = strDate.split("/",0);
-
-
-        yLabel.setText(values[0]);
-        mLabel.setText(values[1]);
-        dLabel.setText(values[2]);
-        eLabel.setText(values[3]);
 
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

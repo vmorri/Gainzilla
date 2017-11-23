@@ -5,14 +5,17 @@ import android.icu.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private ListView lv;
-    private WorkoutList WL = new WorkoutList()
+    private WorkoutList WL = new WorkoutList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

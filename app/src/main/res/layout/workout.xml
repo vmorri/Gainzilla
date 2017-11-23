@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Two"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.project.section003.group1.gainzilla.MainActivity"
     android:background="#3fb399"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context="com.project.section003.group1.gainzilla.MainActivity">
 
 
     <ListView
@@ -14,8 +15,45 @@
         android:layout_height="363dp" />
 
     <Button
-        android:id="@+id/One"
+        android:id="@+id/workout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
+    <Button
+        android:id="@+id/workout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button" />
+
 </LinearLayout>

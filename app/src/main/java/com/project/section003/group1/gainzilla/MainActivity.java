@@ -24,10 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button start = (Button) findViewById(R.id.Start);
         Button addworkout = (Button) findViewById(R.id.add);
-        int WLsize = WL.workouts.size();
+        int WLsize = WL.numWorkouts;
         if(WLsize >= 1){
             Button workout1 = (Button) findViewById(R.id.One);
         }
+
+        /*
         //create workout
         lv = (ListView) findViewById(R.id.addExerList);
         List<Exercise> your_array_list = WL.currentWorkout.ex;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 your_array_list );
         lv.setAdapter(arrayAdapter);
 
-
+        */
 
 
         start.setOnClickListener(new View.OnClickListener() {

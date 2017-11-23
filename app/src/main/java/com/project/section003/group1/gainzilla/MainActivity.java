@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+    private ListView lv;
+    private WorkoutList WL = new WorkoutList()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

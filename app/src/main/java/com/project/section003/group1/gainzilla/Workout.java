@@ -3,10 +3,10 @@ package com.project.section003.group1.gainzilla;
 import java.util.ArrayList;
 
 public class Workout {
-    String name;
-    int Date;
-    ArrayList<Exercise> ex;
-    int rest;
+    public String name;
+    public int Date;
+    public ArrayList<Exercise> ex;
+    public int rest;
 
     public Workout(String name){
         this.name = name;

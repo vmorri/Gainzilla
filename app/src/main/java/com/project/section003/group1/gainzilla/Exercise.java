@@ -55,7 +55,7 @@ public class Exercise extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.exList);
 
         listItems = new ArrayList<>();
-        listItems.add(editText);
+       // listItems.add(editText);
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, listItems);

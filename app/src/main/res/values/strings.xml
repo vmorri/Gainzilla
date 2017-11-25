@@ -7,4 +7,5 @@
     <string name="repetitions">Repetitions</string>
     <string name="button">Button</string>
     <string name="add_workout">Add Workout</string>
+    <string name="title_activity_workout">WorkoutActivity</string>
 </resources>

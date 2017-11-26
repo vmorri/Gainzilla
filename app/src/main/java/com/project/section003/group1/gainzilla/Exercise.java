@@ -23,7 +23,7 @@ public class Exercise extends AppCompatActivity {
     EditText weight;
     EditText sets;
     EditText reps;
-    String newItem;
+    String newItem; // String that has name, weight, sets, and reps of exercise
     Bundle bundle;
     Intent intent;
 

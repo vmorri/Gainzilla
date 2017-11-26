@@ -38,7 +38,7 @@ public class Exercise extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                all_info =("Workout Name: \n\n" + name.getText().toString()+ "Name: " + name.getText().toString() + "\t\t\tWeight: " + weight.getText().toString()
+                all_info =("Workout Name: \t\t" + workout_name.getText().toString()+ "\n\nName: " + name.getText().toString() + "\t\t\tWeight: " + weight.getText().toString()
                         + "\t\t\tSets: " + sets.getText().toString() + "\t\t\tReps: " + reps.getText().toString() + "\n\n");
                 // add new item to arraylist
                 itemList.add(all_info);

@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+
+/*
+*  Provides backend functionality for Workout option from the main page. User will be allowed to
+*  create and delete workouts. For current implementation, we only allow the user to have up to
+*  7 workouts saved.
+* */
 public class WorkoutActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.project.section003.group1.gainzilla";
 

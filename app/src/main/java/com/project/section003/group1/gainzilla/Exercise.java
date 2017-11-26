@@ -4,79 +4,54 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 public class Exercise extends AppCompatActivity {
-
-/*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
-
-    }
-*/
+    ArrayAdapter<String> adapter;
     EditText editText;
     EditText editText2;
     EditText editText3;
     EditText editText4;
 
-    Button addButton;
-    ListView listView;
-    ArrayList<String> listItems;
-    ArrayAdapter<String> adapter;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    ArrayList<String> itemList;
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+        String[] items={""};
+        itemList=new ArrayList<String>(Arrays.asList(items));
+        adapter=new ArrayAdapter<String>(this,R.layout.list_items,R.id.txtview,itemList);
 
-        editText = (EditText) findViewById(R.id.textInputEditText);
-        editText2 = (EditText) findViewById(R.id.textInputEditText2);
-        editText3 = (EditText) findViewById(R.id.textInputEditText3);
-        editText4 = (EditText) findViewById(R.id.textInputEditText4);
+        ListView listV=(ListView)findViewById(R.id.list);
+        listV.setAdapter(adapter);
+
+        editText=(EditText)findViewById(R.id.txtInput);
+        editText2=(EditText)findViewById(R.id.txtInput2);
+        editText3=(EditText)findViewById(R.id.txtInput3);
+        editText4=(EditText)findViewById(R.id.txtInput3);
 
 
-        addButton = (Button) findViewById(R.id.createButton);
-        listView = (ListView) findViewById(R.id.exList);
-
-        listItems = new ArrayList<>();
-       // listItems.add(editText);
-
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, listItems);
-        listView.setAdapter(adapter);
-        addButton.setOnClickListener(new View.OnClickListener() {
-
+        Button btAdd=(Button)findViewById(R.id.btAdd);
+        btAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                listItems.add(editText.getText().toString());
+                String newItem=("Name:" + editText.getText().toString() + "     Weight:" + editText2.getText().toString() + "        Sets:" + editText3.getText().toString() + "         Reps:" + editText4.getText().toString() + "");
+
+                // add new item to arraylist
+                itemList.add(newItem);
+                // notify listview of data changed
                 adapter.notifyDataSetChanged();
             }
+
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position,
-                                    long id) {
-                Toast.makeText(Exercise.this, "Clicked", Toast.LENGTH_LONG)
-                        .show();
-            }
-        });
+
     }
+
 }
-
-
-

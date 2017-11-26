@@ -62,9 +62,6 @@ public class Exercise extends AppCompatActivity {
                 bundle.putFloat("Weight",Float.parseFloat(weight.getText().toString()));
                 bundle.putInt("sets", Integer.parseInt(sets.getText().toString()));
                 bundle.putInt("reps", Integer.parseInt(reps.getText().toString()));
-                ///** passing string array*/
-                // bundle.putStringArray("array", arr);
-                // intent.putExtras(bundle);
                 ///** start Activity2 */
                 //startActivity(intent);
 

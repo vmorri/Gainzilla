@@ -38,7 +38,8 @@ public class Exercise extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                all_info =("Name: " + name.getText().toString() + "     Weight: " + weight.getText().toString() + "        Sets: " + sets.getText().toString() + "         Reps: " + reps.getText().toString() + "");
+                all_info =("Workout Name: \n" + name.getText().toString()+ "Name: " + name.getText().toString() + "\t\t\tWeight: " + weight.getText().toString()
+                        + "\t\t\tSets: " + sets.getText().toString() + "\t\t\tReps: " + reps.getText().toString() + "");
                 // add new item to arraylist
                 itemList.add(all_info);
                 // notify listview of data changed
@@ -48,6 +49,7 @@ public class Exercise extends AppCompatActivity {
                 intent = new Intent(Exercise.this, Workout.class);
                 bundle = new Bundle();
                 // sends the name, weight, sets, and reps value in their respective data types.
+                bundle.putString("workout_name", workout_name.getText().toString());
                 bundle.putString("name", name.getText().toString());
                 bundle.putFloat("Weight",Float.parseFloat(weight.getText().toString()));
                 bundle.putInt("sets", Integer.parseInt(sets.getText().toString()));

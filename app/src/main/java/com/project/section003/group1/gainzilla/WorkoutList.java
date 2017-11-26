@@ -16,8 +16,8 @@ public final class WorkoutList {
 
     public void addNewWorkout(Workout plan){
 
-        //If plan does not match with any of workouts, allow to add
-        //Otherwise return an error
+        // If plan does not match with any of workouts, allow to add
+        // Otherwise return an error
         for(Workout w: listworkouts){
             if(w.name.equals(plan.name)){
                 System.out.println("Plan is already inside list");
@@ -32,8 +32,8 @@ public final class WorkoutList {
 
     public void deleteWorkout(Workout plan){
 
-        //If plan does not match with any of workouts, allow to add
-        //Otherwise return an error
+        // If plan does not match with any of workouts, allow to add
+        // Otherwise return an error
         for(Workout w: listworkouts){
             if(w.name.equals(plan.name)){
                 listworkouts.remove(plan);

@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setContentView(R.layout.add);
+                Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
+                startActivity(intent);
             }
         });
         addworkout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //setContentView(R.layout.activity_exercise);
-                Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
+                Intent intent = new Intent(view.getContext(), Exercise.class);
                 startActivity(intent);
             }
         });

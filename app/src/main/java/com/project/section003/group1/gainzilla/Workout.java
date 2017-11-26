@@ -20,7 +20,7 @@ import java.util.ArrayList;
 * WorkoutList class creates objects that contain a list of workouts. Only one WorkoutList object
 * should ever exist.
 * */
-public class Workout {
+public class Workout extends AppCompatActivity{
     public String name;
     public int Date;
     public ArrayList<Exercise> ex;

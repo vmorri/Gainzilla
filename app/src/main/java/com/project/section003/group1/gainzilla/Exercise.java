@@ -16,12 +16,15 @@ import java.util.Arrays;
 
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
-    EditText editText;
-    EditText editText2;
-    EditText editText3;
-    EditText editText4;
+    EditText editText;    //Name
+    EditText editText2;   //Weight
+    EditText editText3;   //Set
+    EditText editText4;   //Reps
 
+    //Lists of exercises
     ArrayList<String> itemList;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
@@ -32,10 +35,11 @@ public class Exercise extends AppCompatActivity {
         ListView listV=(ListView)findViewById(R.id.list);
         listV.setAdapter(adapter);
 
+        // Creates initial layout upon starting up page
         editText=(EditText)findViewById(R.id.txtInput);
         editText2=(EditText)findViewById(R.id.txtInput2);
         editText3=(EditText)findViewById(R.id.txtInput3);
-        editText4=(EditText)findViewById(R.id.txtInput3);
+        editText4=(EditText)findViewById(R.id.txtInput4);
 
 
         Button btAdd=(Button)findViewById(R.id.btAdd);
@@ -46,6 +50,7 @@ public class Exercise extends AppCompatActivity {
 
                 // add new item to arraylist
                 itemList.add(newItem);
+
                 // notify listview of data changed
                 adapter.notifyDataSetChanged();
             }

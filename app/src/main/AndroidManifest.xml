@@ -19,9 +19,11 @@
         <activity android:name=".Exercise" />
         <activity
             android:name=".WorkoutActivity"
-            android:parentActivityName=".MainActivity"
             android:label="Select Workout"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WorkoutDisplayActivity"
+            android:parentActivityName=".WorkoutActivity"/>
     </application>
 
 </manifest>

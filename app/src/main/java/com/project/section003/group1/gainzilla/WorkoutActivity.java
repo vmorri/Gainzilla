@@ -1,5 +1,6 @@
 package com.project.section003.group1.gainzilla;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,7 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class WorkoutActivity extends AppCompatActivity {
-   // public ListView lv;
+    public static final String EXTRA_MESSAGE = "com.project.section003.group1.gainzilla";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +102,60 @@ public class WorkoutActivity extends AppCompatActivity {
         }
         workoutOne.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                setContentView(R.layout.add);
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "1";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
             }
         });
-
+        workoutTwo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "2";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
+        workoutThree.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "3";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
+        workoutFour.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "4";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
+        workoutFive.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "5";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
+        workoutSix.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "6";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
+        workoutSeven.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), WorkoutDisplayActivity.class);
+                String message = "7";
+                intent.putExtra(EXTRA_MESSAGE, message);
+                startActivity(intent);
+            }
+        });
     }
 
 }

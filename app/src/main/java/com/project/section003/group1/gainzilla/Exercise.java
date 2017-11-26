@@ -34,16 +34,16 @@ public class Exercise extends AppCompatActivity {
         itemList=new ArrayList<String>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this,R.layout.list_items,R.id.txtview,itemList);
 
-        ListView listV=(ListView)findViewById(R.id.list);
+        ListView listV=findViewById(R.id.list);
         listV.setAdapter(adapter);
 
-        name=(EditText)findViewById(R.id.txtInput);
-        weight=(EditText)findViewById(R.id.txtInput2);
-        sets=(EditText)findViewById(R.id.txtInput3);
-        reps=(EditText)findViewById(R.id.txtInput4);
+        name=findViewById(R.id.txtInput);
+        weight=findViewById(R.id.txtInput2);
+        sets=findViewById(R.id.txtInput3);
+        reps=findViewById(R.id.txtInput4);
 
 
-        Button btAdd=(Button)findViewById(R.id.btAdd);
+        Button btAdd=findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,12 +55,13 @@ public class Exercise extends AppCompatActivity {
 
 
                 ///** getting the value of edit text entered by user */
-                //String exercise_to_pass = newItem;
-                //Intent intent = new Intent(Exercise.this, Workout.class);
-                ///** setting the textVal in intentExtra */
-                ///** passing string */
-                //bundle = new Bundle();
-                //bundle.putString("exercise_to_pass", exercise_to_pass);
+                intent = new Intent(Exercise.this, Workout.class);
+                bundle = new Bundle();
+                // sends the name, weight, sets, and reps value in their respective data types.
+                bundle.putString("name", name.getText().toString());
+                bundle.putFloat("Weight",Float.parseFloat(weight.getText().toString()));
+                bundle.putInt("sets", Integer.parseInt(sets.getText().toString()));
+                bundle.putInt("reps", Integer.parseInt(reps.getText().toString()));
                 ///** passing string array*/
                 // bundle.putStringArray("array", arr);
                 // intent.putExtras(bundle);

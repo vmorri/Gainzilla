@@ -19,10 +19,10 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
-    EditText editText;
-    EditText editText2;
-    EditText editText3;
-    EditText editText4;
+    EditText name;
+    EditText weight;
+    EditText sets;
+    EditText reps;
     String newItem;
     Bundle bundle;
     Intent intent;
@@ -38,17 +38,17 @@ public class Exercise extends AppCompatActivity {
         ListView listV=(ListView)findViewById(R.id.list);
         listV.setAdapter(adapter);
 
-        editText=(EditText)findViewById(R.id.txtInput);
-        editText2=(EditText)findViewById(R.id.txtInput2);
-        editText3=(EditText)findViewById(R.id.txtInput3);
-        editText4=(EditText)findViewById(R.id.txtInput4);
+        name=(EditText)findViewById(R.id.txtInput);
+        weight=(EditText)findViewById(R.id.txtInput2);
+        sets=(EditText)findViewById(R.id.txtInput3);
+        reps=(EditText)findViewById(R.id.txtInput4);
 
 
         Button btAdd=(Button)findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newItem=("Name:" + editText.getText().toString() + "     Weight:" + editText2.getText().toString() + "        Sets:" + editText3.getText().toString() + "         Reps:" + editText4.getText().toString() + "");
+                newItem=("Name:" + name.getText().toString() + "     Weight:" + weight.getText().toString() + "        Sets:" + sets.getText().toString() + "         Reps:" + reps.getText().toString() + "");
                 // add new item to arraylist
                 itemList.add(newItem);
                 // notify listview of data changed

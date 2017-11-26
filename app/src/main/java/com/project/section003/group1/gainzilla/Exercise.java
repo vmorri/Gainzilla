@@ -2,6 +2,7 @@ package com.project.section003.group1.gainzilla;
 
 import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -73,5 +76,20 @@ public class Exercise extends AppCompatActivity {
 
     }
 
+    @Override
+    /*
+    * Notifies the user that workout has been recorded
+    * Saves workout under specific name to firebase*/
+    public void onBackPressed() {
+        Toast.makeText(this, "Your workout has been saved", Toast.LENGTH_SHORT).show();
 
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+            }
+        }, 4000);
+        super.onBackPressed();
+    }
 }

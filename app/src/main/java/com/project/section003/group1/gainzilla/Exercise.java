@@ -64,6 +64,12 @@ public class Exercise extends AppCompatActivity {
                 bundle.putInt("reps", Integer.parseInt(reps.getText().toString()));
                 ///** start Activity2 */
                 //startActivity(intent);
+
+                name.setText(null);
+                weight.setText(null);
+                sets.setText(null);
+                reps.setText(null);
+                workout_name.setText(null);
             }
         });
     }

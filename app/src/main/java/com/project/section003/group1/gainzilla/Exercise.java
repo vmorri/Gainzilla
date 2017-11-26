@@ -26,7 +26,6 @@ public class Exercise extends AppCompatActivity {
     String newItem; // String that has name, weight, sets, and reps of exercise
     Bundle bundle;
     Intent intent;
-
     ArrayList<String> itemList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,21 +53,20 @@ public class Exercise extends AppCompatActivity {
                 // notify listview of data changed
                 adapter.notifyDataSetChanged();
 
-                /** getting the value of edit text entered by user */
-                String exercise_to_pass = newItem;
-                Intent intent = new Intent(Exercise.this, Workout.class);
 
-                /** setting the textVal in intentExtra */
-                /** passing string */
-                bundle = new Bundle();
-                bundle.putString("exercise_to_pass", exercise_to_pass);
-
-                /** passing string array*/
+                ///** getting the value of edit text entered by user */
+                //String exercise_to_pass = newItem;
+                //Intent intent = new Intent(Exercise.this, Workout.class);
+                ///** setting the textVal in intentExtra */
+                ///** passing string */
+                //bundle = new Bundle();
+                //bundle.putString("exercise_to_pass", exercise_to_pass);
+                ///** passing string array*/
                 // bundle.putStringArray("array", arr);
                 // intent.putExtras(bundle);
+                ///** start Activity2 */
+                //startActivity(intent);
 
-                /** start Activity2 */
-                startActivity(intent);
             }
         });
 

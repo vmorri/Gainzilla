@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools= "http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".Exercise"
+    >
+
+    <!-- Creating an exercise -->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Edit the name of the exercise-->
+
+        <!-- Edit the weight being used -->
+
+        <!-- Edit the number of sets performed -->
+
+        <!-- Edit the number of reps -->
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!-- Displays the list of exercises-->
+    <ListView
+        android:id="@+id/exerList"
+        android:layout_width="match_parent"
+        android:layout_height="294dp"
+        android:divider="@android:drawable/button_onoff_indicator_off"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"></ListView>
+
+    <!-- Add exercise button-->
+</LinearLayout>

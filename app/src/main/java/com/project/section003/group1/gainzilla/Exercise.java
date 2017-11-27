@@ -1,12 +1,10 @@
 package com.project.section003.group1.gainzilla;
 
 import android.content.Intent;
-<<<<<<< HEAD
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
-=======
->>>>>>> ef151e2177bce572a268e4c502eab827464a46a9
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -81,7 +79,6 @@ public class Exercise extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
 
     @Override
     /*
@@ -99,6 +96,4 @@ public class Exercise extends AppCompatActivity {
         }, 4000);
         super.onBackPressed();
     }
-=======
->>>>>>> ef151e2177bce572a268e4c502eab827464a46a9
 }

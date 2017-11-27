@@ -18,9 +18,11 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
-            android:id="@+id/editTextDialogUserInput"
+            android:id="@+id/editTextInput"
+            android:labelFor="@+id/editTextInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:inputType="">
+            android:layout_height="wrap_content"
+            android:inputType="">
 
             <requestFocus />
 

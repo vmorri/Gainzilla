@@ -51,7 +51,7 @@ public class WorkoutDisplayActivity extends AppCompatActivity {
                 alertDialogBuilder.setView(promptsView);
 
                 final EditText userInput = (EditText) promptsView
-                        .findViewById(R.id.editTextDialogUserInput);
+                        .findViewById(R.id.editTextInput);
 
                 // set dialog message
                 alertDialogBuilder

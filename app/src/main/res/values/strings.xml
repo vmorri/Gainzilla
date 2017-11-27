@@ -10,6 +10,7 @@
     <string name="weight">Weight</string>
     <string name="sets">Sets</string>
     <string name="reps">Reps</string>>
-    <string name="workout_name">Workout Name</string>>
+    <string name="workout_name">Workout Name</string>
+    <string name="enter_new_weight">Enter new weight</string>>
 </resources>
 

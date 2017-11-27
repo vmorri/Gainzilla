@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,8 +15,14 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
@@ -24,6 +31,19 @@ public class Exercise extends AppCompatActivity {
     Bundle bundle;
     Intent intent;
     ArrayList<String> itemList;
+
+    // Firestore variables
+
+    public static final String WORKOUT_KEY = "name";
+    public static final String NAME_KEY = "name";
+    public static final String WEIGHT_KEY = "weight";
+    public static final String SETS_KEY = "sets";
+    public static final String REPS_KEY = "reps";
+
+
+    ///////////////////////////////////////////////
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
@@ -44,14 +64,6 @@ public class Exercise extends AppCompatActivity {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (workout_name.getText().toString().equals("") || name.getText().toString().equals("") ||
-                        weight.getText().toString().equals("") || sets.getText().toString().equals("") ||reps.getText().toString().equals("") ){
-                    Toast.makeText(getApplicationContext(), "Empty BOX", Toast.LENGTH_SHORT).show();
-
-                }
-
-
                 all_info =("Workout Name: \t\t" + workout_name.getText().toString()+ "\n\nName: " + name.getText().toString() + "\t\t\tWeight: " + weight.getText().toString()
                         + "\t\t\tSets: " + sets.getText().toString() + "\t\t\tReps: " + reps.getText().toString() + "\n\n");
                 // add new item to arraylist
@@ -71,11 +83,40 @@ public class Exercise extends AppCompatActivity {
                 ///** start Activity2 */
                 //startActivity(intent);
 
-                name.setText(null);
-                weight.setText(null);
-                sets.setText(null);
-                reps.setText(null);
-                workout_name.setText(null);
+
+                /*Firebase related code
+                *
+                *  In Firebase Cloud storage, data is organized into documents and collections. Collections
+                *  are not able to contain any data except for documents and documents are the only ones that contain
+                *  strings, ints, etc. However, documents can link to subsections. For reference sake, the order works
+                *  where the first directory is the root and is a collection
+                *
+                *  Workouts/"NameofWorkout"/Exercise/"NameofExercise"
+                *
+                * */
+
+                //Names the new collection ("workout")
+                String planRef = workout_name.getText().toString();
+                String nameRef = name.getText().toString();
+
+                //Creates a document with workout plan that points to a collection of exercises
+                DocumentReference WorkoutRef = FirebaseFirestore.getInstance().document("Workouts/" + planRef + "/Exercises/" + nameRef);
+
+
+                //Logs data into the database
+                Map<String, Object> firebaseData = new HashMap<String, Object>();
+                firebaseData.put(WEIGHT_KEY, Float.parseFloat(weight.getText().toString()));
+                firebaseData.put(SETS_KEY, Integer.parseInt(sets.getText().toString()));
+                firebaseData.put(REPS_KEY, Integer.parseInt(reps.getText().toString()));
+
+                //Checks if data passed was successful
+                WorkoutRef.set(firebaseData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Exercise", "Exercise has been saved");
+                    }
+                });
+
             }
         });
     }

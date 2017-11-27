@@ -24,6 +24,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
+
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     EditText workout_name, name, weight, sets, reps;
@@ -32,16 +34,33 @@ public class Exercise extends AppCompatActivity {
     Intent intent;
     ArrayList<String> itemList;
 
-    // Firestore variables
 
+    //////// Firestore variables////////////////////
     public static final String WORKOUT_KEY = "name";
     public static final String NAME_KEY = "name";
     public static final String WEIGHT_KEY = "weight";
     public static final String SETS_KEY = "sets";
     public static final String REPS_KEY = "reps";
-
-
     ///////////////////////////////////////////////
+
+
+
+
+    //SQL LITE Attempt
+    private String _workoutname;
+    private String _exname;
+    private float _weight;
+    private int _sets;
+    private int _reps;
+
+    //Constructor (We assume we can only create once exercise if completely filled)
+    public Exercise(String _workoutname, String _exname, float _weight, int _sets, int _reps){
+        this._workoutname = _workoutname;
+        this._exname = _exname;
+        this._weight = _weight;
+        this._sets = _sets;
+        this._reps = _reps;
+    }
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +135,21 @@ public class Exercise extends AppCompatActivity {
                         Log.d("Exercise", "Exercise has been saved");
                     }
                 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             }
         });

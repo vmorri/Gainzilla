@@ -28,7 +28,7 @@ import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
 
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
-    EditText workout_name, name, weight, sets, reps;
+    EditText view_workout_name, view_name, view_weight, view_sets, view_reps;
     String all_info; // String that has name, weight, sets, and reps of exercise
     Bundle bundle;
     Intent intent;
@@ -62,6 +62,27 @@ public class Exercise extends AppCompatActivity {
         this._reps = _reps;
     }
 
+    // Below methods allow database to retrieve the data
+    public String getWorkoutName(){
+        return this._workoutname;
+    }
+
+    public String getExName(){
+        return this._exname;
+    }
+
+    public float getWeight(){
+        return this._weight;
+    }
+
+    public int getSets(){
+        return this._sets;
+    }
+
+    public int getReps(){
+        return this._reps;
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,32 +94,52 @@ public class Exercise extends AppCompatActivity {
         ListView listV=findViewById(R.id.list);
         listV.setAdapter(adapter);
 
-        name=findViewById(R.id.txtInput);
-        weight=findViewById(R.id.txtInput2);
-        sets=findViewById(R.id.txtInput3);
-        reps=findViewById(R.id.txtInput4);
-        workout_name=findViewById(R.id.txtInput5);
+        view_name=findViewById(R.id.txtInput);
+        view_weight=findViewById(R.id.txtInput2);
+        view_sets=findViewById(R.id.txtInput3);
+        view_reps=findViewById(R.id.txtInput4);
+        view_workout_name=findViewById(R.id.txtInput5);
 
         Button btAdd=findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                all_info =("Workout Name: \t\t" + workout_name.getText().toString()+ "\n\nName: " + name.getText().toString() + "\t\t\tWeight: " + weight.getText().toString()
-                        + "\t\t\tSets: " + sets.getText().toString() + "\t\t\tReps: " + reps.getText().toString() + "\n\n");
+                all_info =("Workout Name: \t\t" + view_workout_name.getText().toString()+ "" +
+                           "\n\nName: " + view_name.getText().toString() +
+                           "\t\t\tWeight: " + view_weight.getText().toString() +
+                           "\t\t\tSets: " + view_sets.getText().toString() +
+                           "\t\t\tReps: " + view_reps.getText().toString()
+                           + "\n\n");
+
                 // add new item to arraylist
                 itemList.add(all_info);
+
                 // notify listview of data changed
                 adapter.notifyDataSetChanged();
 
                 ///** getting the value of edit text entered by user */
                 intent = new Intent(Exercise.this, Workout.class);
                 bundle = new Bundle();
+
+
+                // Converts Android Text Format to correct data structures
+                String workout_name = view_workout_name.getText().toString();
+                String name = view_name.getText().toString();
+                float weight = Float.parseFloat(view_weight.getText().toString());
+                int sets = Integer.parseInt(view_sets.getText().toString());
+                int reps = Integer.parseInt(view_reps.getText().toString());
+
+                //Create exercise object
+                Exercise exercise_new = new Exercise(workout_name, name, weight, sets, reps);
+
+
+
                 // sends the name, weight, sets, and reps value in their respective data types.
-                bundle.putString("workout_name", workout_name.getText().toString());
-                bundle.putString("name", name.getText().toString());
-                bundle.putFloat("Weight",Float.parseFloat(weight.getText().toString()));
-                bundle.putInt("sets", Integer.parseInt(sets.getText().toString()));
-                bundle.putInt("reps", Integer.parseInt(reps.getText().toString()));
+                bundle.putString("workout_name", workout_name);
+                bundle.putString("name", name);
+                bundle.putFloat("Weight", weight);
+                bundle.putInt("sets", sets);
+                bundle.putInt("reps", reps);
                 ///** start Activity2 */
                 //startActivity(intent);
 
@@ -114,19 +155,15 @@ public class Exercise extends AppCompatActivity {
                 *
                 * */
 
-                //Names the new collection ("workout")
-                String planRef = workout_name.getText().toString();
-                String nameRef = name.getText().toString();
-
                 //Creates a document with workout plan that points to a collection of exercises
-                DocumentReference WorkoutRef = FirebaseFirestore.getInstance().document("Workouts/" + planRef + "/Exercises/" + nameRef);
+                DocumentReference WorkoutRef = FirebaseFirestore.getInstance().document("Workouts/" + workout_name + "/Exercises/" + name);
 
 
                 //Logs data into the database
                 Map<String, Object> firebaseData = new HashMap<String, Object>();
-                firebaseData.put(WEIGHT_KEY, Float.parseFloat(weight.getText().toString()));
-                firebaseData.put(SETS_KEY, Integer.parseInt(sets.getText().toString()));
-                firebaseData.put(REPS_KEY, Integer.parseInt(reps.getText().toString()));
+                firebaseData.put(WEIGHT_KEY, weight);
+                firebaseData.put(SETS_KEY, sets);
+                firebaseData.put(REPS_KEY, reps);
 
                 //Checks if data passed was successful
                 WorkoutRef.set(firebaseData).addOnSuccessListener(new OnSuccessListener<Void>() {

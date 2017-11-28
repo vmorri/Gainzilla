@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -59,7 +60,7 @@ public class Exercise extends AppCompatActivity implements Serializable{
     //SQL LITE Attempt
     private String _workoutname;
     private String _exname;
-    private float _weight;
+    private int _weight;
     private int _sets;
     private int _reps;
     MyDBHandler dbHandler;
@@ -74,12 +75,23 @@ public class Exercise extends AppCompatActivity implements Serializable{
 
     }
 
-    public Exercise(String _workoutname, String _exname, float _weight, int _sets, int _reps){
+    public Exercise(String _workoutname, String _exname, int _weight, int _sets, int _reps){
         this._workoutname = _workoutname;
         this._exname = _exname;
         this._weight = _weight;
         this._sets = _sets;
         this._reps = _reps;
+    }
+
+    @Override
+    public String toString() {
+        return this._exname + ":  " + this._weight + " lbs                   " + this._sets + " X " + this._reps;
+    }
+
+    public void setWeight(Editable weight){
+        int newWeight;
+        newWeight = Integer.parseInt(String.valueOf(weight));
+        this._weight = newWeight;
     }
 
     // Below methods allow database to retrieve the data
@@ -174,7 +186,7 @@ public class Exercise extends AppCompatActivity implements Serializable{
                 // Converts Android Text Format to correct data structures
                 String workout_name = view_workout_name.getText().toString();
                 String name = view_name.getText().toString();
-                float weight = Float.parseFloat(view_weight.getText().toString());
+                int weight = Integer.parseInt(view_weight.getText().toString());
                 int sets = Integer.parseInt(view_sets.getText().toString());
                 int reps = Integer.parseInt(view_reps.getText().toString());
 

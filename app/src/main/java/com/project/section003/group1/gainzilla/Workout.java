@@ -1,5 +1,6 @@
 package com.project.section003.group1.gainzilla;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 * WorkoutList class creates objects that contain a list of workouts. Only one WorkoutList object
 * should ever exist.
 * */
-public class Workout{
+public class Workout implements Serializable{
     public String name;
     public int Date;
     public ArrayList<Exercise> ex;

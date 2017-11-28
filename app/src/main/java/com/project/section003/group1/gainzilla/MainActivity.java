@@ -52,9 +52,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         Button start = (Button) findViewById(R.id.Start);
         Button addworkout = (Button) findViewById(R.id.add);
 
+        //John's edit
         List<Workout> WorkoutList = new ArrayList<Workout>();
         WorkoutList.add(new Workout());
         WorkoutList.get(0).changeName("testing");

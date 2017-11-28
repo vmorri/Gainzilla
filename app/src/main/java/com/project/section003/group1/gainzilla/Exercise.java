@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
@@ -36,7 +37,7 @@ public class Exercise extends AppCompatActivity {
     Intent intent;
     ArrayList<String> itemList;
     Workout workout_new;
-    int listsize;
+    int listsize = 0;
 
 
     //////// Firestore variables////////////////////
@@ -105,7 +106,10 @@ public class Exercise extends AppCompatActivity {
         itemList=new ArrayList<String>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this,R.layout.list_items,R.id.txtview,itemList);
         workout_new = new Workout();
-        listsize = 0;
+
+
+        //Initialize the list here once
+        final List<Workout> workoutplans = new ArrayList<Workout>();
 
 
         ListView listV=findViewById(R.id.list);
@@ -163,11 +167,13 @@ public class Exercise extends AppCompatActivity {
                 //Create exercise object
                 Exercise exercise_new = new Exercise(workout_name, name, weight, sets, reps);
 
-                //Add an exercise to workout
+                // Add an exercise to workout
                 workout_new.addExercise(exercise_new);
 
-                //Add workout to workoutlist
-                WorkoutList.listworkouts.add(listsize, workout_new);
+                // Add workout to workout list
+                workoutplans.add(listsize,workout_new);
+
+
 
 
 
@@ -233,7 +239,7 @@ public class Exercise extends AppCompatActivity {
     * Saves workout under specific name to firebase*/
     public void onBackPressed() {
         Toast.makeText(this, "Your workout has been saved", Toast.LENGTH_SHORT).show();
-
+        listsize += 1;
         new Handler().postDelayed(new Runnable() {
 
             @Override

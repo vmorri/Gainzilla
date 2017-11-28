@@ -105,7 +105,7 @@ public class Exercise extends AppCompatActivity {
         itemList=new ArrayList<String>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this,R.layout.list_items,R.id.txtview,itemList);
         workout_new = new Workout();
-        listsize = WorkoutList.getWorkoutList().size();
+        listsize = 0;
 
 
         ListView listV=findViewById(R.id.list);

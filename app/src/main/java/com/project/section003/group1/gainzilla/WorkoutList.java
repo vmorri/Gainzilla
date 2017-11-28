@@ -1,8 +1,9 @@
 package com.project.section003.group1.gainzilla;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public final class WorkoutList {
+public final class WorkoutList implements Serializable{
 
     // Array that holds a list of workouts
     public static ArrayList<Workout> listworkouts;
@@ -13,7 +14,7 @@ public final class WorkoutList {
     }
 
     //Returns the workout
-    public static ArrayList<Workout> getWorkoutList(){
+    public ArrayList<Workout> getWorkoutList(){
         return this.listworkouts;
     }
 

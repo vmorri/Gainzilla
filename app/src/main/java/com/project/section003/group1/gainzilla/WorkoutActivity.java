@@ -32,7 +32,7 @@ public class WorkoutActivity extends AppCompatActivity {
         Button workoutSix = (Button) findViewById(R.id.workout6);
         Button workoutSeven = (Button) findViewById(R.id.workout7);
 
-        int WLsize = WorkoutList.numWorkouts;
+        int WLsize = 0;
 
         if(WLsize == 0){
             workoutOne.setVisibility(View.GONE);

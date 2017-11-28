@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,18 +24,35 @@ public class WorkoutDisplayActivity extends AppCompatActivity {
     final Context context = this;
     private Button button;
     private EditText result;
+    private static final String TAG = "mainActivity";
+    private static final String KEY = "workouts";
+    public List<Workout> workoutplans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_display);
 
+        try {
+            // Retrieve the list from internal storage
+            workoutplans = (List<Workout>) InternalStorage.readObject(this, KEY);
+
+            // Display the items from the list retrieved.
+            for (Workout workout : workoutplans) {
+                Log.d(TAG, workout.name);
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (ClassNotFoundException e) {
+            Log.w(TAG, e.getMessage());
+        }
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(WorkoutActivity.EXTRA_MESSAGE);
         final int workoutNum = Integer.parseInt(message);
 
         lv = (ListView) findViewById(R.id.exerList3);
-        List<Exercise> your_array_list = WorkoutList.listworkouts.get(workoutNum -1).ex;
+        List<Exercise> your_array_list = workoutplans.get(workoutNum -1).ex;
         ArrayAdapter<Exercise> arrayAdapter = new ArrayAdapter<Exercise>(
                 this,
                 android.R.layout.simple_list_item_1,

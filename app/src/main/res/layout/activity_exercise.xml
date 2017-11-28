@@ -90,16 +90,23 @@
 
     <Button
         android:id="@+id/btAdd"
-        android:layout_width="match_parent"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:text="@string/add"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <TextView
+        android:id="@+id/exerciseTable"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:text="ExerciseTableView"
+        android:textColor="@android:color/holo_green_dark" />
+
     <ListView
         android:id="@+id/list"
         android:layout_width="363dp"
-        android:layout_height="333dp"
+        android:layout_height="352dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:divider="@android:drawable/button_onoff_indicator_off"

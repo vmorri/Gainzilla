@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +30,7 @@ import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
 public class Exercise extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     EditText view_workout_name, view_name, view_weight, view_sets, view_reps;
+    TextView view_database;
     String all_info; // String that has name, weight, sets, and reps of exercise
     Bundle bundle;
     Intent intent;
@@ -52,8 +54,18 @@ public class Exercise extends AppCompatActivity {
     private float _weight;
     private int _sets;
     private int _reps;
+    MyDBHandler dbHandler;
 
     //Constructor (We assume we can only create once exercise if completely filled)
+
+    public Exercise(){
+        this._exname = " ";
+        this._weight = 0;
+        this._sets = 0;
+        this._reps = 0;
+
+    }
+
     public Exercise(String _workoutname, String _exname, float _weight, int _sets, int _reps){
         this._workoutname = _workoutname;
         this._exname = _exname;
@@ -99,6 +111,16 @@ public class Exercise extends AppCompatActivity {
         view_sets=findViewById(R.id.txtInput3);
         view_reps=findViewById(R.id.txtInput4);
         view_workout_name=findViewById(R.id.txtInput5);
+        view_database=findViewById(R.id.exerciseTable);
+
+        //Creates the DB handler object
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        printDatabase();
+
+
+
+
+
 
         Button btAdd=findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +154,8 @@ public class Exercise extends AppCompatActivity {
                 //Create exercise object
                 Exercise exercise_new = new Exercise(workout_name, name, weight, sets, reps);
 
+                dbHandler.addExerise(exercise_new);
+                printDatabase();
 
 
                 // sends the name, weight, sets, and reps value in their respective data types.
@@ -175,21 +199,15 @@ public class Exercise extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
         });
+    }
+
+
+    //printDatabase method
+    public void printDatabase(){
+        String dbString = dbHandler.DatabasetoString();
+        view_database.setText(dbString);
     }
 
     @Override

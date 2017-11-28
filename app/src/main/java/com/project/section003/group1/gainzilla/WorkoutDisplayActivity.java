@@ -61,7 +61,7 @@ public class WorkoutDisplayActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog,int id) {
                                         // get user input and set it to result
                                         // edit weight
-                                        WorkoutList.listworkouts.get(workoutNum - 1).ex.get(position).weight = (EditText) userInput.getText();
+                                        /*WorkoutList.listworkouts.get(workoutNum - 1).ex.get(position).weight = (EditText) userInput.getText();*/
                                     }
                                 })
                         .setNegativeButton("Cancel",

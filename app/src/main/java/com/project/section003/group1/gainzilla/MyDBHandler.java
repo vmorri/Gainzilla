@@ -14,9 +14,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "gainzilla.db";
-    public static final String TABLE_EXERCISES = "excercisesTable";
-    public static final String COLUMN_WORKOUTNAME = "_workoutname";
-    public static final String COLUMN_EXERCISENAME = "excercisename";
+    public static final String TABLE_EXERCISES = "exercisesTable";
+    public static final String COLUMN_WORKOUTNAME = "workoutname";
+    public static final String COLUMN_EXERCISENAME = "exercisename";
     public static final String COLUMN_WEIGHT = "weight";
     public static final String COLUMN_SETS = "sets";
     public static final String COLUMN_REPS = "reps";
@@ -47,7 +47,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //Add a new row to Table Exercise
+    //Add an exercise to Database
     public void addExerise(Exercise exercise){
         ContentValues values = new ContentValues();
         values.put(COLUMN_WORKOUTNAME, exercise.getWorkoutName());
@@ -55,6 +55,30 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_WEIGHT, exercise.getWeight());
         values.put(COLUMN_SETS, exercise.getSets());
         values.put(COLUMN_REPS, exercise.getReps());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_EXERCISES, null, values);
+        db.close();
     }
+
+    public String DatabasetoString(){
+        String dbString = "";
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_EXERCISES + " WHERE 1";
+
+        //Cursor to point
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+
+        while(!c.isAfterLast()){
+            if(c.getString(c.getColumnIndex("workoutname"))!=null){
+                dbString += c.getString(c.getColumnIndex("workoutname"));
+                dbString += "\n";
+            }
+        }
+        db.close();
+        return dbString;
+    }
+
+    //Delete an exercise from the Database
 
 }

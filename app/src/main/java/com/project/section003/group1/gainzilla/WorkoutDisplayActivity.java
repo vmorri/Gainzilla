@@ -53,7 +53,7 @@ public class WorkoutDisplayActivity extends AppCompatActivity {
 
         lv = (ListView) findViewById(R.id.exerList3);
         List<Exercise> your_array_list = workoutplans.get(workoutNum -1).ex;
-        ArrayAdapter<Exercise> arrayAdapter = new ArrayAdapter<Exercise>(
+        final ArrayAdapter<Exercise> arrayAdapter = new ArrayAdapter<Exercise>(
                 this,
                 android.R.layout.simple_list_item_1,
                 your_array_list );
@@ -81,6 +81,7 @@ public class WorkoutDisplayActivity extends AppCompatActivity {
                                         // get user input and set it to result
                                         // edit weight
                                         workoutplans.get(workoutNum - 1).ex.get(position).setWeight(userInput.getText());
+                                        arrayAdapter.notifyDataSetChanged();
                                     }
                                 })
                         .setNegativeButton("Cancel",

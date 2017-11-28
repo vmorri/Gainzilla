@@ -75,6 +75,16 @@ public class Exercise extends AppCompatActivity implements Serializable{
 
     }
 
+    public Exercise(String _exname, int _weight, int _sets, int _reps){
+        this._workoutname = "Unknown";
+        this._exname = _exname;
+        this._weight = _weight;
+        this._sets = _sets;
+        this._reps = _reps;
+    }
+
+
+
     public Exercise(String _workoutname, String _exname, int _weight, int _sets, int _reps){
         this._workoutname = _workoutname;
         this._exname = _exname;
@@ -150,11 +160,7 @@ public class Exercise extends AppCompatActivity implements Serializable{
         view_sets=findViewById(R.id.txtInput3);
         view_reps=findViewById(R.id.txtInput4);
         view_workout_name=findViewById(R.id.txtInput5);
-        view_database=findViewById(R.id.exerciseTable);
 
-        //Creates the DB handler object
-        dbHandler = new MyDBHandler(this, null, null, 1);
-        printDatabase();
 
 
 
@@ -204,11 +210,6 @@ public class Exercise extends AppCompatActivity implements Serializable{
                 workoutplans.add(listsize,workout_new);
 
 
-
-
-
-                dbHandler.addExerise(exercise_new);
-                printDatabase();
 
 
                 // sends the name, weight, sets, and reps value in their respective data types.

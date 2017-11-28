@@ -42,7 +42,6 @@
         android:layout_below="@+id/add"
         android:layout_marginTop="80dp"
         android:background="@android:color/black"
-        android:contextClickable="false"
         android:scaleX="2"
         android:scaleY="2"
         android:text="Graph Progress"

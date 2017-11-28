@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,6 +30,8 @@ import java.util.Map;
 import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
 
 public class Exercise extends AppCompatActivity {
+    private static final String TAG = "mainActivity";
+    private static final String KEY = "workouts";
     ArrayAdapter<String> adapter;
     EditText view_workout_name, view_name, view_weight, view_sets, view_reps;
     TextView view_database;
@@ -37,7 +40,8 @@ public class Exercise extends AppCompatActivity {
     Intent intent;
     ArrayList<String> itemList;
     Workout workout_new;
-    int listsize = 0;
+    public static int listsize = 0;
+    public static List<Workout> workoutplans;
 
 
     //////// Firestore variables////////////////////
@@ -109,7 +113,7 @@ public class Exercise extends AppCompatActivity {
 
 
         //Initialize the list here once
-        final List<Workout> workoutplans = new ArrayList<Workout>();
+        workoutplans = new ArrayList<Workout>();
 
 
         ListView listV=findViewById(R.id.list);
@@ -240,6 +244,32 @@ public class Exercise extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(this, "Your workout has been saved", Toast.LENGTH_SHORT).show();
         listsize += 1;
+
+
+        Log.d(TAG, "????");
+        try {
+            // Save the list of entries to internal storage
+            InternalStorage.writeObject(this, KEY, workoutplans.get(listsize - 1));
+
+            // Retrieve the list from internal storage
+            List<Workout> WorkoutListRecall = (List<Workout>) InternalStorage.readObject(this, KEY);
+
+            // Display the items from the list retrieved.
+            for (Workout workout : WorkoutListRecall) {
+                Log.d(TAG, workout.name);
+                Log.d(TAG, "0000");
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (ClassNotFoundException e) {
+            Log.w(TAG, e.getMessage());
+        }
+
+
+
+
+
+
         new Handler().postDelayed(new Runnable() {
 
             @Override

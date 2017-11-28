@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.io.IOException;
+import java.util.List;
 
 
 /*
@@ -16,6 +20,9 @@ import android.widget.ListView;
 * */
 public class WorkoutActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.project.section003.group1.gainzilla";
+    private static final String TAG = "mainActivity";
+    private static final String KEY = "workouts";
+    public List<Workout> workoutplans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,20 @@ public class WorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        try {
+            // Retrieve the list from internal storage
+            workoutplans = (List<Workout>) InternalStorage.readObject(this, KEY);
+
+            // Display the items from the list retrieved.
+            for (Workout workout : workoutplans) {
+                Log.d(TAG, workout.name);
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (ClassNotFoundException e) {
+            Log.w(TAG, e.getMessage());
+        }
 
         Button workoutOne = (Button) findViewById(R.id.workout1);
         Button workoutTwo = (Button) findViewById(R.id.workout2);
@@ -32,7 +53,7 @@ public class WorkoutActivity extends AppCompatActivity {
         Button workoutSix = (Button) findViewById(R.id.workout6);
         Button workoutSeven = (Button) findViewById(R.id.workout7);
 
-        int WLsize = 0;
+        int WLsize = Exercise.listsize;
 
         if(WLsize == 0){
             workoutOne.setVisibility(View.GONE);
@@ -44,7 +65,7 @@ public class WorkoutActivity extends AppCompatActivity {
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 1){
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
+            workoutOne.setText(workoutplans.get(0).name);
             workoutTwo.setVisibility(View.GONE);
             workoutThree.setVisibility(View.GONE);
             workoutFour.setVisibility(View.GONE);
@@ -53,8 +74,8 @@ public class WorkoutActivity extends AppCompatActivity {
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 2){
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
             workoutThree.setVisibility(View.GONE);
             workoutFour.setVisibility(View.GONE);
             workoutFive.setVisibility(View.GONE);
@@ -62,49 +83,49 @@ public class WorkoutActivity extends AppCompatActivity {
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 3) {
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
-            workoutThree.setText(WorkoutList.listworkouts.get(2).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
+            workoutThree.setText(workoutplans.get(2).name);
             workoutFour.setVisibility(View.GONE);
             workoutFive.setVisibility(View.GONE);
             workoutSix.setVisibility(View.GONE);
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 4) {
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
-            workoutThree.setText(WorkoutList.listworkouts.get(2).name);
-            workoutFour.setText(WorkoutList.listworkouts.get(3).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
+            workoutThree.setText(workoutplans.get(2).name);
+            workoutFour.setText(workoutplans.get(3).name);
             workoutFive.setVisibility(View.GONE);
             workoutSix.setVisibility(View.GONE);
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 5) {
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
-            workoutThree.setText(WorkoutList.listworkouts.get(2).name);
-            workoutFour.setText(WorkoutList.listworkouts.get(3).name);
-            workoutFive.setText(WorkoutList.listworkouts.get(4).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
+            workoutThree.setText(workoutplans.get(2).name);
+            workoutFour.setText(workoutplans.get(3).name);
+            workoutFive.setText(workoutplans.get(4).name);
             workoutSix.setVisibility(View.GONE);
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 6) {
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
-            workoutThree.setText(WorkoutList.listworkouts.get(2).name);
-            workoutFour.setText(WorkoutList.listworkouts.get(3).name);
-            workoutFive.setText(WorkoutList.listworkouts.get(4).name);
-            workoutSix.setText(WorkoutList.listworkouts.get(5).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
+            workoutThree.setText(workoutplans.get(2).name);
+            workoutFour.setText(workoutplans.get(3).name);
+            workoutFive.setText(workoutplans.get(4).name);
+            workoutSix.setText(workoutplans.get(5).name);
             workoutSeven.setVisibility(View.GONE);
         }
         if(WLsize == 7) {
-            workoutOne.setText(WorkoutList.listworkouts.get(0).name);
-            workoutTwo.setText(WorkoutList.listworkouts.get(1).name);
-            workoutThree.setText(WorkoutList.listworkouts.get(2).name);
-            workoutFour.setText(WorkoutList.listworkouts.get(3).name);
-            workoutFive.setText(WorkoutList.listworkouts.get(4).name);
-            workoutSix.setText(WorkoutList.listworkouts.get(5).name);
-            workoutSeven.setText(WorkoutList.listworkouts.get(6).name);
+            workoutOne.setText(workoutplans.get(0).name);
+            workoutTwo.setText(workoutplans.get(1).name);
+            workoutThree.setText(workoutplans.get(2).name);
+            workoutFour.setText(workoutplans.get(3).name);
+            workoutFive.setText(workoutplans.get(4).name);
+            workoutSix.setText(workoutplans.get(5).name);
+            workoutSeven.setText(workoutplans.get(6).name);
         }
         workoutOne.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

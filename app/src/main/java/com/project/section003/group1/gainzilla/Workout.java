@@ -23,18 +23,22 @@ public class Workout{
     public int rest;
 
     //Constructor for Workout
-    public Workout(String name){
+    public Workout(){
+        this.name = "Unknown";
+    }
+
+    public void changeName(String name){
         this.name = name;
     }
 
 
     // Adds exercise to workout
-    private void addExercise(Exercise exercise){
+    public void addExercise(Exercise exercise){
         this.ex.add(exercise);
     }
 
     // Deletes exercise in workout
-    private void delExercise(int index){
+    public void delExercise(int index){
         this.ex.remove(index);
     }
 

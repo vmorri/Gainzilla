@@ -12,7 +12,7 @@ import android.content.ContentValues;
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "gainzilla.db";
     public static final String TABLE_EXERCISES = "exercisesTable";
     public static final String COLUMN_WORKOUTNAME = "workoutname";

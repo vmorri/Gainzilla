@@ -6,14 +6,18 @@ public final class WorkoutList {
 
     // Array that holds a list of workouts
     public static ArrayList<Workout> listworkouts;
-    public static int numWorkouts;
 
-
+    //Creates the workout list
     public WorkoutList(){
-        listworkouts = new ArrayList<Workout>();
-        numWorkouts = listworkouts.size();
+        this.listworkouts = new ArrayList<Workout>();
     }
 
+    //Returns the workout
+    public static ArrayList<Workout> getWorkoutList(){
+        return this.listworkouts;
+    }
+
+    /*
     public void addNewWorkout(Workout plan){
 
         // If plan does not match with any of workouts, allow to add
@@ -29,6 +33,7 @@ public final class WorkoutList {
             }
         }
     }
+    */
 
     public void deleteWorkout(Workout plan){
 

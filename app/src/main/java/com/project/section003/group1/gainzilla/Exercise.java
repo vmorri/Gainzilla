@@ -35,6 +35,8 @@ public class Exercise extends AppCompatActivity {
     Bundle bundle;
     Intent intent;
     ArrayList<String> itemList;
+    Workout workout_new;
+    int listsize;
 
 
     //////// Firestore variables////////////////////
@@ -102,6 +104,9 @@ public class Exercise extends AppCompatActivity {
         String[] items={""};
         itemList=new ArrayList<String>(Arrays.asList(items));
         adapter=new ArrayAdapter<String>(this,R.layout.list_items,R.id.txtview,itemList);
+        workout_new = new Workout();
+        listsize = WorkoutList.getWorkoutList().size();
+
 
         ListView listV=findViewById(R.id.list);
         listV.setAdapter(adapter);
@@ -121,7 +126,7 @@ public class Exercise extends AppCompatActivity {
 
 
 
-
+        // ADD BUTTON
         Button btAdd=findViewById(R.id.btAdd);
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,8 +156,20 @@ public class Exercise extends AppCompatActivity {
                 int sets = Integer.parseInt(view_sets.getText().toString());
                 int reps = Integer.parseInt(view_reps.getText().toString());
 
+                //Change the name of workout
+                workout_new.changeName(workout_name);
+
+
                 //Create exercise object
                 Exercise exercise_new = new Exercise(workout_name, name, weight, sets, reps);
+
+                //Add an exercise to workout
+                workout_new.addExercise(exercise_new);
+
+                //Add workout to workoutlist
+                WorkoutList.listworkouts.add(listsize, workout_new);
+
+
 
                 dbHandler.addExerise(exercise_new);
                 printDatabase();

@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         List<Workout> WorkoutList = new ArrayList<Workout>();
         WorkoutList.add(new Workout());
         WorkoutList.get(0).changeName("testing");
-        Log.d(TAG, "????");
+        Log.d(TAG, "?mainact");
         try {
             // Save the list of entries to internal storage
             InternalStorage.writeObject(this, KEY, WorkoutList);

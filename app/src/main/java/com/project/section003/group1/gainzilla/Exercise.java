@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 import static com.project.section003.group1.gainzilla.WorkoutList.listworkouts;
 
-public class Exercise extends AppCompatActivity {
+public class Exercise extends AppCompatActivity implements Serializable{
     private static final String TAG = "mainActivity";
     private static final String KEY = "workouts";
     ArrayAdapter<String> adapter;
@@ -41,7 +42,7 @@ public class Exercise extends AppCompatActivity {
     ArrayList<String> itemList;
     Workout workout_new;
     public static int listsize = 0;
-    public static List<Workout> workoutplans;
+    public List<Workout> workoutplans;
 
 
     //////// Firestore variables////////////////////
@@ -113,7 +114,20 @@ public class Exercise extends AppCompatActivity {
 
 
         //Initialize the list here once
-        workoutplans = new ArrayList<Workout>();
+        try {
+            // Retrieve the list from internal storage
+            workoutplans = (List<Workout>) InternalStorage.readObject(this, KEY);
+
+            // Display the items from the list retrieved.
+            for (Workout workout : workoutplans) {
+                Log.d(TAG, workout.name);
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+        } catch (ClassNotFoundException e) {
+            Log.w(TAG, e.getMessage());
+        }
+        //workoutplans = new ArrayList<Workout>();
 
 
         ListView listV=findViewById(R.id.list);
@@ -245,24 +259,17 @@ public class Exercise extends AppCompatActivity {
         Toast.makeText(this, "Your workout has been saved", Toast.LENGTH_SHORT).show();
         listsize += 1;
 
-
-        Log.d(TAG, "????");
+        Log.d(TAG, "xercise");
         try {
             // Save the list of entries to internal storage
-            InternalStorage.writeObject(this, KEY, workoutplans.get(listsize - 1));
+            InternalStorage.writeObject(this, KEY, workoutplans);
 
             // Retrieve the list from internal storage
-            List<Workout> WorkoutListRecall = (List<Workout>) InternalStorage.readObject(this, KEY);
+           // List<Workout> WorkoutListRecall = (List<Workout>) InternalStorage.readObject(this, KEY);
 
-            // Display the items from the list retrieved.
-            for (Workout workout : WorkoutListRecall) {
-                Log.d(TAG, workout.name);
-                Log.d(TAG, "0000");
-            }
+
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
-        } catch (ClassNotFoundException e) {
-            Log.w(TAG, e.getMessage());
         }
 
 

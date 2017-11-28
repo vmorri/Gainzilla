@@ -26,6 +26,7 @@ public class Workout implements Serializable{
     //Constructor for Workout
     public Workout(){
         this.name = "Unknown";
+        this.ex = new ArrayList<Exercise>();
     }
 
     public void changeName(String name){
